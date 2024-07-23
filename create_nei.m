@@ -79,7 +79,7 @@ function [nei_chromos,nei_schedule,nei_sign,PS_conmence_num]=create_nei(schedule
                     u_schedule=this_keyblock(1,:);v_schedule=this_keyblock(point,:);
                     if can_U2Vnext(u_schedule,v_schedule,tail_data)
                         this_move_forward_index=[2:point,1,point+1:this_block_size];
-                        this_nei_schedule=scheduel;
+                        this_nei_schedule=schedule;
                         this_move_block_before_arrange=this_keyblock(this_move_forward_index,:);
                         this_move_block=[];
                         this_move_block(point+1:this_block_size,:)=this_move_block_before_arrange(point+1:end,:);
@@ -99,8 +99,8 @@ function [nei_chromos,nei_schedule,nei_sign,PS_conmence_num]=create_nei(schedule
                     this_keyblock(:,10)=-1;this_keyblock(point,10)=0;this_keyblock(point+1:end-1,10)=1;this_keyblock(end,10)=2;
                     u_schedule=this_keyblock(point,:);v_schedule=this_keyblock(end,:);
                     if can_U2Vnext(u_schedule,v_schedule,tail_data)
-                        this_move_forward_index=[1:point-1,point+1:sizeBlock,point];
-                        this_nei_schedule=scheduel;
+                        this_move_forward_index=[1:point-1,point+1:this_block_size,point];
+                        this_nei_schedule=schedule;
                         this_move_block_before_arrange=this_keyblock(this_move_forward_index,:);
                         this_move_block=[];
                         this_move_block=this_move_block_before_arrange(1:point-1,:);
