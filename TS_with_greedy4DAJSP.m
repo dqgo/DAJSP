@@ -17,7 +17,8 @@ function chromo=TS_with_greedy4DAJSP(chromo,iterate_num,threshold,data,tubeSearc
         [keyblock_schedule, index] = find_keyblock(schedule);  
         % 对每个关键块调度进行标注 
         % 对FA作业重新分配到其他工厂，对PS进行N5，对AS进行N1
-        [nei_chromos]=create_schedule(schedule,index,keyblock_schedule,chromo,data);
+        % [nei_chromos]=create_schedule(schedule,index,keyblock_schedule,chromo,data);
+        [nei_chromos,nei_schedule,nei_sign,PS_conmence_num]=create_nei(schedule,index,keyblock_schedule,chromo,data,schedule_right,Cmax);
         if size(nei_chromos,1)==0
             isbreak=1;break;
         end
