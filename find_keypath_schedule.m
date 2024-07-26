@@ -1,31 +1,29 @@
 % schedule=[1工件号 2工序号  3机器号 4开工时间 5完工时间 6工厂号 7装配号 8属性(0加工/1装配)]
 % if 8==1  schedule=[-1 -1 -1 4开工时间 5完工时间 -1 7装配号 8属性(1装配)]
-function keypath_schedule=find_keypath_schedule(schedule,Cmax)
-    Cmax_schedules=schedule(schedule(:,5)==Cmax,:);
-    this_schedule=Cmax_schedules(1,:);
-    this_schedule_conmence_time=this_schedule(4);
-    keypath_schedule=this_schedule;
-    while(this_schedule_conmence_time>0)
+function keypath_schedule = find_keypath_schedule(schedule, Cmax)
+    Cmax_schedules = schedule(schedule(:, 5) == Cmax, :);
+    this_schedule = Cmax_schedules(1, :);
+    this_schedule_conmence_time = this_schedule(4);
+    keypath_schedule = this_schedule;
 
-            schedule_end_eq_this_conmence=schedule(schedule(:,5)==this_schedule_conmence_time,:);
-            the_next_schedule=schedule_end_eq_this_conmence(randperm(size(schedule_end_eq_this_conmence,1),1),:);
-            keypath_schedule=[the_next_schedule;keypath_schedule];
-            this_schedule=the_next_schedule;
-            this_schedule_conmence_time=this_schedule(4);
+    while (this_schedule_conmence_time > 0)
+
+        schedule_end_eq_this_conmence = schedule(schedule(:, 5) == this_schedule_conmence_time, :);
+        the_next_schedule = schedule_end_eq_this_conmence(randperm(size(schedule_end_eq_this_conmence, 1), 1), :);
+        keypath_schedule = [the_next_schedule; keypath_schedule];
+        this_schedule = the_next_schedule;
+        this_schedule_conmence_time = this_schedule(4);
 
     end
+
 end
-
-
-
-
 
 % function [chromo,keypath_schedule]= search_key_path(schedule,Cmax,workpieceNum,machNum)
 %     schedule=sortrows(schedule,4);
 %     last_schedule_index=find(schedule(:,5)==Cmax);%选最后一个数的行数
 %     last_schedule= last_schedule_index(randi(numel(last_schedule_index)));
 %     temp_key_path_schedule=
-% 
+%
 % end
 
 % function keypath_schedule=find_keypath_schedule(sch,Cmax)
@@ -53,5 +51,3 @@ end
 % end
 
 %keypath【机器号，行号，工件号，工序号】
-
-

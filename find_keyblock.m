@@ -4,15 +4,15 @@ function [keyblock_schedule, index] = find_keyblock(schedule)
     % 初始化 keyblock_schedule 和 index 元胞数组
     keyblock_schedule = {};
     index = {};
-    
+
     % % 找出装配工序中的关键工序
     % assembly_schedule = schedule(schedule(:, 9) == 1 & schedule(:, 8) == 1, :);
     % assembly_indices = find(schedule(:, 9) == 1 & schedule(:, 8) == 1);
-    % 
+    %
     % % 初始化关键块
     % current_block = [];
     % current_indices = [];
-    % 
+    %
     % % 遍历装配工序
     % for i = 1:size(assembly_schedule, 1)
     %     if isempty(current_block)
@@ -33,25 +33,25 @@ function [keyblock_schedule, index] = find_keyblock(schedule)
     %         end
     %     end
     % end
-    % 
+    %
     % % 最后一个关键块加入 keyblock_schedule
     % if ~isempty(current_block) && size(current_block, 1) > 1
     %     keyblock_schedule{end+1} = current_block;
     %     index{end+1} = current_indices;
     % end
-    % 
+    %
     % 找出加工工序中的关键工序
     machine_schedule = schedule(schedule(:, 9) == 1 & schedule(:, 8) == 0, :);
     machine_indices = find(schedule(:, 9) == 1 & schedule(:, 8) == 0);
     factories = unique(machine_schedule(:, 6));
-    
+
     % 遍历所有工厂
     for f = 1:length(factories)
         current_factory = factories(f);
         factory_schedule = machine_schedule(machine_schedule(:, 6) == current_factory, :);
         factory_indices = machine_indices(machine_schedule(:, 6) == current_factory);
         machines = unique(factory_schedule(:, 3));
-        
+
         % 遍历当前工厂的所有机器
         for m = 1:length(machines)
             current_machine = machines(m);
@@ -62,8 +62,9 @@ function [keyblock_schedule, index] = find_keyblock(schedule)
             machine_op_indices = machine_op_indices(sort_order);
             current_block = [];
             current_indices = [];
-            
+
             for i = 1:size(machine_operations, 1)
+
                 if isempty(current_block)
                     current_block = machine_operations(i, :);
                     current_indices = machine_op_indices(i);
@@ -73,42 +74,41 @@ function [keyblock_schedule, index] = find_keyblock(schedule)
                         current_block = [current_block; machine_operations(i, :)];
                         current_indices = [current_indices; machine_op_indices(i)];
                     else
+
                         if size(current_block, 1) > 1
-                            keyblock_schedule{end+1} = current_block;
-                            index{end+1} = current_indices;
+                            keyblock_schedule{end + 1} = current_block;
+                            index{end + 1} = current_indices;
                         end
+
                         current_block = machine_operations(i, :);
                         current_indices = machine_op_indices(i);
                     end
+
                 end
+
             end
-            
+
             % 最后一个关键块加入 keyblock_schedule
             if ~isempty(current_block) && size(current_block, 1) > 1
-                keyblock_schedule{end+1} = current_block;
-                index{end+1} = current_indices;
+                keyblock_schedule{end + 1} = current_block;
+                index{end + 1} = current_indices;
             end
+
         end
+
     end
+
 end
-
-
-
-
-
-
-
-
 
 % function keyblock_schedule = find_keyblock(keypath_schedule)
 %     % 初始化 keyblock_schedule 元胞数组
 %     keyblock_schedule = {};
-% 
+%
 %     % 找出装配工序
 %     assembly_schedule = keypath_schedule(keypath_schedule(:,8) == 1, :);
 %     % 初始化关键块
 %     current_block = [];
-% 
+%
 %     % 遍历装配工序
 %     for i = 1:size(assembly_schedule, 1)
 %         if isempty(current_block)
@@ -125,22 +125,22 @@ end
 %             end
 %         end
 %     end
-% 
+%
 %     % 最后一个关键块加入 keyblock_schedule
 %     if ~isempty(current_block) && size(current_block, 1) > 1
 %         keyblock_schedule{end+1} = current_block;
 %     end
-% 
+%
 %     % 找出加工工序
 %     machine_schedule = keypath_schedule(keypath_schedule(:,8) == 0, :);
 %     factories = unique(machine_schedule(:, 6));
-% 
+%
 %     % 遍历所有工厂
 %     for f = 1:length(factories)
 %         current_factory = factories(f);
 %         factory_schedule = machine_schedule(machine_schedule(:, 6) == current_factory, :);
 %         machines = unique(factory_schedule(:, 3));
-% 
+%
 %         % 遍历当前工厂的所有机器
 %         for m = 1:length(machines)
 %             current_machine = machines(m);
@@ -148,7 +148,7 @@ end
 %             % 按开工时间排序
 %             machine_operations = sortrows(machine_operations, 4);
 %             current_block = [];
-% 
+%
 %             for i = 1:size(machine_operations, 1)
 %                 if isempty(current_block)
 %                     current_block = machine_operations(i, :);
@@ -164,7 +164,7 @@ end
 %                     end
 %                 end
 %             end
-% 
+%
 %             % 最后一个关键块加入 keyblock_schedule
 %             if ~isempty(current_block) && size(current_block, 1) > 1
 %                 keyblock_schedule{end+1} = current_block;
@@ -172,20 +172,18 @@ end
 %         end
 %     end
 % end
-% 
-% 
-
-
+%
+%
 
 % function keyblock_schedule = find_keyblock(keypath_schedule)
 %     % 初始化 keyblock_schedule 元胞数组
 %     keyblock_schedule = {};
-% 
+%
 %     % 找出装配工序
 %     assembly_schedule = keypath_schedule(keypath_schedule(:,8) == 1, :);
 %     % 初始化关键块
 %     current_block = [];
-% 
+%
 %     % 遍历装配工序
 %     for i = 1:size(assembly_schedule, 1)
 %         if isempty(current_block)
@@ -202,16 +200,16 @@ end
 %             end
 %         end
 %     end
-% 
+%
 %     % 最后一个关键块加入 keyblock_schedule
 %     if ~isempty(current_block) && size(current_block, 1) > 1
 %         keyblock_schedule{end+1} = current_block;
 %     end
-% 
+%
 %     % 找出加工工序
 %     machine_schedule = keypath_schedule(keypath_schedule(:,8) == 0, :);
 %     machines = unique(machine_schedule(:, 3));
-% 
+%
 %     % 遍历所有机器
 %     for m = 1:length(machines)
 %         current_machine = machines(m);
@@ -219,7 +217,7 @@ end
 %         % 按开工时间排序
 %         machine_operations = sortrows(machine_operations, 4);
 %         current_block = [];
-% 
+%
 %         for i = 1:size(machine_operations, 1)
 %             if isempty(current_block)
 %                 current_block = machine_operations(i, :);
@@ -235,18 +233,13 @@ end
 %                 end
 %             end
 %         end
-% 
+%
 %         % 最后一个关键块加入 keyblock_schedule
 %         if ~isempty(current_block) && size(current_block, 1) > 1
 %             keyblock_schedule{end+1} = current_block;
 %         end
 %     end
 % end
-
-
-
-
-
 
 % function keyblock_schedule = find_keyblock(keypath_schedule)
 %     % 初始化 keyblock_schedule 元胞数组
@@ -303,17 +296,12 @@ end
 %     end
 % end
 
-
-
-
-
-
 % function keyblock_schedule=find_keyblock(keypath_schedule)
 %     keypath_schedule_num=size(keypath_schedule,1);
 %     keyblock_schedule=cell(1,keypath_schedule_num);
 %     j=1;
 %     for i=1:keypath_schedule_num
-% 
+%
 %     end
 % end
 

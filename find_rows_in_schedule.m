@@ -3,24 +3,21 @@
 function indices = find_rows_in_schedule(a, b)
     % 初始化输出的行号数组
     indices = [];
-    
+
     % 遍历矩阵a的每一行
     for i = 1:size(a, 1)
         % 获取当前行
         current_row = a(i, :);
-        
+
         % 检查当前行是否存在于矩阵b中
         if ismember(current_row, b, 'rows')
             % 如果存在，则将其行号添加到indices中
             indices = [indices; i];
         end
+
     end
+
 end
-
-
-
-
-
 
 % function [schedule,schedule_right] = find_key_schedule(schedule,schedule_right)
 %     % schedule=sortrows(schedule,4);
