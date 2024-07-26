@@ -10,7 +10,8 @@ function fitness = approximate_fitness(nei_schedule, nei_sign, schedule, data, s
 
         for i = 1:size(nei_sign,2)
             this_sign = nei_sign(i);
-            u_schedule = nei_schedule(nei_schedule(:, 10) == 0, :); l_schedule = nei_schedule(nei_schedule(:, 10) == 1, :); v_schedule = nei_schedule(nei_schedule(:, 10) == 2, :);
+            this_nei_schedule=nei_schedule(:,:,i);
+            u_schedule = this_nei_schedule(this_nei_schedule(:, 10) == 0, :); l_schedule = this_nei_schedule(this_nei_schedule(:, 10) == 1, :); v_schedule = this_nei_schedule(this_nei_schedule(:, 10) == 2, :);
 
             if this_sign
                 %如果是u移动到v之后
@@ -19,8 +20,8 @@ function fitness = approximate_fitness(nei_schedule, nei_sign, schedule, data, s
                 this_Q = [v_schedule; u_schedule; l_schedule];
             end
 
-            this_nei_head_leagth = approximate_head_length(this_Q, nei_schedule, schedule, data, schedule_right, Cmax, u_schedule, l_schedule, v_schedule);
-            this_nei_tail_leagth = approximate_tail_length(this_Q, nei_schedule, schedule, data, schedule_right, Cmax, u_schedule, l_schedule, v_schedule);
+            this_nei_head_leagth = approximate_head_length(this_Q, this_nei_schedule, schedule, data, schedule_right, Cmax, u_schedule, l_schedule, v_schedule);
+            this_nei_tail_leagth = approximate_tail_length(this_Q, this_nei_schedule, schedule, data, schedule_right, Cmax, u_schedule, l_schedule, v_schedule);
             this_nei_Cmax = max([this_nei_head_leagth + this_nei_tail_leagth]);
             fitness = [fitness; this_nei_Cmax];
         end
@@ -55,7 +56,7 @@ function this_nei_head_leagth = approximate_head_length(this_Q, nei_schedule, sc
 
     the_first_schedule_head_leagth = max([the_first_schedule_head_leagth_1, the_first_schedule_head_leagth_2]);
     this_nei_head_leagth = the_first_schedule_head_leagth;
-    this_MP_head_leagth = the_first_schedule_head_leagth;
+    this_MP_head_leagth_add_work_time = the_first_schedule_head_leagth+the_first_schedule(5)-the_first_schedule(4);
 
     for i = 2:this_Q_size
         this_work_schedule = this_Q(i, :);
@@ -66,9 +67,9 @@ function this_nei_head_leagth = approximate_head_length(this_Q, nei_schedule, sc
         else
             JP_this_work_head_leagth=JP_this_work_schedule(5);
         end
-        this_work_head_leageh = max([JP_this_work_head_leagth, this_MP_head_leagth]);
+        this_work_head_leageh = max([JP_this_work_head_leagth, this_MP_head_leagth_add_work_time]);
         this_nei_head_leagth = [this_nei_head_leagth; this_work_head_leageh];
-        this_MP_head_leagth = this_work_head_leageh;
+        this_MP_head_leagth_add_work_time = this_work_head_leageh+this_work_schedule(5)-this_work_schedule(4);
     end
 
 end
@@ -76,7 +77,7 @@ end
 % 新的schedule=[1工件号 2工序号  3机器号 4开工时间 5完工时间 6工厂号 7装配号 8属性(0加工/1装配) 9是否关键块 10UVQ标识 0=U 1=Q 2=V -1=其他 ]
 function this_nei_tail_leagth = approximate_tail_length(this_Q, nei_schedule, schedule, data, schedule_right, Cmax, u_schedule, l_schedule, v_schedule)
     % ！！！这里的尾长是从开始时间开始的
-    tail_data = schedule; tail_data(:, 11) = Cmax - schedule_right(:, 4);
+    tail_data = schedule_right; tail_data(:, 11) = Cmax - schedule_right(:, 4);
     % 尾长有三个约束：AS MS和JS
     % 首先还是看最后一个工序 分别JS、AS 和V的MS
     this_Q_size = size(this_Q, 1);
@@ -103,7 +104,7 @@ function this_nei_tail_leagth = approximate_tail_length(this_Q, nei_schedule, sc
         the_last_schedule_tail_leagth_3 = JS_end_work_tail_schedule(11);
     end
 
-    the_last_schedule_tail_leagth = max([the_last_schedule_tail_leagth_1 the_last_schedule_tail_leagth_2 the_last_schedule_tail_leagth_3]);
+    the_last_schedule_tail_leagth = max([the_last_schedule_tail_leagth_1 the_last_schedule_tail_leagth_2 the_last_schedule_tail_leagth_3])+this_work_schedule(5)-this_work_schedule(4);
     this_nei_tail_leagth = the_last_schedule_tail_leagth;
     this_MS_tail_leageh = the_last_schedule_tail_leagth;
 
@@ -118,8 +119,8 @@ function this_nei_tail_leagth = approximate_tail_length(this_Q, nei_schedule, sc
             this_work_tail_leagth_3 = JS_this_work_tail_schedule(11);
         end
 
-        this_work_tail_leagth = max([this_MS_tail_leageh, this_work_tail_leagth_2, this_work_tail_leagth_3]);
-        this_nei_tail_leagth = [this_nei_tail_leagth; this_work_tail_leagth];
+        this_work_tail_leagth = max([this_MS_tail_leageh, this_work_tail_leagth_2, this_work_tail_leagth_3])+this_work_schedule(5)-this_work_schedule(4);
+        this_nei_tail_leagth = [this_work_tail_leagth;this_nei_tail_leagth];
         this_MS_tail_leageh = this_work_tail_leagth;
     end
 
