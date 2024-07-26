@@ -22,8 +22,8 @@ function chromo=TS_with_greedy4DAJSP(chromo,iterate_num,threshold,data,tubeSearc
         if size(nei_chromos,1)==0
             isbreak=1;break;
         end
-        fitness1=calcFitness(nei_chromos,data);
-        fitness2=approximate_fitness(nei_schedule,nei_sign);
+        fitness1=calcFitness(nei_chromos(1:PS_conmence_num-1,:),data);
+        fitness2=approximate_fitness(nei_schedule, nei_sign, schedule, data, schedule_right, Cmax);
         fitness=[fitness1;fitness2];
         [fitness,index]=sortrows(fitness);
         if best_fitness>fitness(1)
