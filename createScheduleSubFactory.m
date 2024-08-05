@@ -38,7 +38,7 @@ function schedule = createScheduleSubFactory(changeData, chromo, workpieceNum, m
 
             if isInsert == 0 %从第二行开始遍历
 
-                for j = 2:size(newSchedule) %下行注释 间隔时间要大于用时，间隔结束时间要大于工件的拟完工时间
+                for j = 2:size(newSchedule,1) %下行注释 间隔时间要大于用时，间隔结束时间要大于工件的拟完工时间
 
                     if newSchedule(j, 4) - newSchedule(j - 1, 5) >= workpieceSpeedTime
 

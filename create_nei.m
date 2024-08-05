@@ -213,6 +213,8 @@ function isOK = can_V2Uper(u_schedule, v_schedule, schedule)
 end
 
 % tail_data=[schedule_right(1:5),Cmax-schedule_right(5)];
+% max（tjsu+pjsu,tasu+pasu）<=tv+pv
+% tv<=max(tjsu+pjus,tasu+pasu)(?)
 function isOK = can_U2Vnext(u_schedule, v_schedule, tail_data)
     % if tjs(u)+pjs(u)<=tv+pv    is OK
     index = ismember(u_schedule(1:2), [tail_data(1), tail_data(2) + 1], 'rows');
