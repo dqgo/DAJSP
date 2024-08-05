@@ -26,8 +26,11 @@ function schedule = createSchedule_in_greed(data, chromo)
 
     % -------------------------------------------分割PS
 
+    % for i = 1:factory_num
+    %     datai{1, i} = change_data(PSi{1, i}, :);
+    % end
     for i = 1:factory_num
-        datai{1, i} = change_data(PSi{1, i}, :);
+        datai{1, i} = change_data(FSi{1, i}, :);
     end
 
     % 现在PSi(i) & subdata(i)共同表示一个JSP问题，但是，工件号是不连续的，现在要把他变成连续的
