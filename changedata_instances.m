@@ -1179,7 +1179,7 @@ function data = changeDataFunction23()
 97 80 2 37 31 37 58 11 24 84 10 30 97 89 47 37 73 11 90 54; 
 1 97 68 8 7 72 38 50 42 32 54 94 31 52 76 20 29 56 36 16 ;
 29 31 49 91 7 37 86 75 21 46 47 1 16 29 47 81 52 44 95 79 ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 2 2 1 1 1 2 2 2 1 1 2 2 1 1 2 2 2 1 1 ];
     assembly_data = [968 166 ];
     job_num = size(change_data, 1);
@@ -1231,7 +1231,7 @@ function data = changeDataFunction24()
 13 96 26 4 89 98 83 8 70 68 37 20 35 99 27 12 73 92 98 75 ;
 75 1 35 73 35 6 38 34 70 51 16 78 58 9 97 55 38 65 1 8 ;
 27 36 50 21 32 6 34 84 50 39 4 94 49 20 98 64 41 29 4 90 ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 2 2 2 1 1 1 2 1 2 2 2 2 1 1 1 1 1 1 2 ];
     assembly_data = [355 680 ];
     job_num = size(change_data, 1);
@@ -1283,7 +1283,7 @@ function data = changeDataFunction25()
 50 50 19 81 1 6 15 30 19 36 64 76 40 32 77 62 52 7 97 40 ;
 29 35 7 59 1 65 92 39 56 93 29 54 41 54 7 85 74 79 72 79 ;
 31 9 76 54 44 39 48 17 4 13 87 24 68 84 82 1 4 60 56 58 ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 2 1 1 1 2 1 1 1 1 2 1 1 1 2 2 2 2 2 2 ];
     assembly_data = [659 561 ];
     job_num = size(change_data, 1);
@@ -1335,7 +1335,7 @@ function data = changeDataFunction26()
 6 28 71 9 27 88 90 72 43 16 36 44 41 37 80 84 86 91 24 3 ;
 43 27 46 67 89 10 63 33 14 95 61 66 68 46 27 5 17 64 10 74; 
 83 35 39 97 99 77 98 88 51 31 88 24 34 44 29 37 23 15 50 56; ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 1 2 2 1 2 3 2 3 2 2 3 2 1 1 1 2 1 2 3  ];
     assembly_data = [340 957 23 ];
     job_num = size(change_data, 1);
@@ -1387,7 +1387,7 @@ function data = changeDataFunction27()
 90 52 10 25 59 55 30 33 18 80 73 41 9 64 79 31 79 44 14 73; 
 59 57 67 47 13 35 72 74 56 85 52 25 92 92 81 76 91 93 36 88; 
 28 89 3 75 31 87 66 67 34 19 30 91 53 81 13 15 59 17 85 11  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 3 2 1 3 2 2 2 3 1 3 2 3 1 1 2 2 2 3 1  ];
     assembly_data = [195 650 119 ];
     job_num = size(change_data, 1);
@@ -1439,7 +1439,7 @@ function data = changeDataFunction28()
 88 88 91 72 9 41 76 24 77 60 93 39 93 71 13 73 44 15 19 95; 
 93 34 36 82 28 52 22 33 77 27 62 59 52 1 39 85 62 34 77 74 ;
 15 38 83 32 12 41 81 79 90 12 18 37 1 91 73 5 82 64 37 91 ; ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [3 3 1 2 2 1 1 2 1 1 3 2 2 3 2 2 1 1 1 1 ];
     assembly_data = [315 316 69 ];
     job_num = size(change_data, 1);
@@ -1491,7 +1491,7 @@ function data = changeDataFunction29()
 69 78 61 52 40 71 40 61 93 37 32 48 7 37 69 4 79 81 10 75 ;
 90 16 68 32 96 7 42 52 38 68 72 78 10 61 40 31 81 69 84 27; 
 91 17 75 7 44 10 32 78 9 69 45 87 90 50 42 2 21 62 93 88  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [3 2 2 3 2 2 2 3 3 1 1 1 2 1 3 3 1 3 1 1 ];
     assembly_data = [259 591 230 ];
     job_num = size(change_data, 1);
@@ -1543,7 +1543,7 @@ function data = changeDataFunction30()
 52 76 79 63 52 23 35 22 58 13 26 68 84 16 28 28 54 76 86 47 ;
 74 34 68 37 26 48 29 24 60 98 54 97 19 99 62 46 25 53 11 4 ;
 15 92 41 63 87 67 77 89 65 17 24 67 10 87 91 58 52 26 33 3 ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 3 3 2 3 3 1 1 1 1 3 3 1 1 2 3 1 1 1 1 ];
     assembly_data = [740 241 612 ];
     job_num = size(change_data, 1);
@@ -1615,7 +1615,7 @@ function data = changeDataFunction31()
 5 52 45 17 94 44 9 18 37 84 28 78 28 68 64 ;
 23 63 57 57 22 71 69 15 19 88 25 83 62 54 68; 
 47 96 11 99 28 8 50 18 97 10 54 50 67 16 79  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [3 3 2 2 3 1 2 1 1 1 2 1 1 2 1 2 1 3 1 2 3 2 2 3 3 3 2 2 3 1 ];
     assembly_data = [290 575 576 ];
     job_num = size(change_data, 1);
@@ -1687,7 +1687,7 @@ function data = changeDataFunction32()
 9 15 85 55 7 6 3 27 11 31 90 81 5 86 30 ;
 53 87 93 62 19 12 53 73 4 1 65 35 65 23 40; 
 13 22 34 5 68 81 53 66 96 50 40 70 92 13 43  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 2 2 3 1 2 2 1 1 3 3 2 3 1 1 3 1 3 1 3 2 1 2 2 1 2 2 3 1 2  ];
     assembly_data = [738 373 184 ];
     job_num = size(change_data, 1);
@@ -1759,7 +1759,7 @@ function data = changeDataFunction33()
 83 62 61 26 14 69 34 61 12 2 27 51 64 14 82 ;
 54 82 68 83 71 81 6 42 22 22 94 25 53 5 70 ;
 67 72 47 35 78 34 67 86 89 69 46 57 87 22 87  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 1 2 2 2 2 2 3 1 1 3 3 2 3 3 2 3 2 2 3 3 3 1 2 1 1 2 2 2 2 ];
     assembly_data = [143 527 572 ];
     job_num = size(change_data, 1);
@@ -1831,7 +1831,7 @@ function data = changeDataFunction34()
 82 61 68 65 48 88 2 76 37 72 18 11 33 24 65 ;
 94 14 17 25 57 81 8 81 59 97 43 34 55 36 2 ;
 23 64 7 89 13 96 84 91 20 3 45 50 1 41 57  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 3 2 1 2 2 1 2 2 3 1 3 1 1 1 1 3 2 1 1 1 3 1 1 1 3 2 1 2 2 ];
     assembly_data = [612 295 420 ];
     job_num = size(change_data, 1);
@@ -1903,7 +1903,7 @@ function data = changeDataFunction35()
 75 82 75 94 67 15 23 57 4 51 23 40 63 97 20 ;
 14 33 16 14 24 1 20 96 75 36 92 74 13 79 48 ;
 33 89 89 49 58 32 95 64 11 13 43 98 32 56 62 ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 3 1 2 1 1 1 1 2 3 3 1 3 1 2 1 2 3 3 3 3 2 2 1 2 3 1 2 1 1 ];
     assembly_data = [637 205 772 ];
     job_num = size(change_data, 1);
@@ -1975,7 +1975,7 @@ function data = changeDataFunction36()
 5 52 45 17 94 44 9 18 37 84 28 78 28 68 64 ;
 23 63 57 57 22 71 69 15 19 88 25 83 62 54 68; 
 47 96 11 99 28 8 50 18 97 10 54 50 67 16 79  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 2 4 3 1 2 2 4 3 2 3 4 1 4 4 3 1 4 4 2 1 2 4 1 2 2 4 3 1 2 ];
     assembly_data = [120 98 325 604 ];
     job_num = size(change_data, 1);
@@ -2047,7 +2047,7 @@ function data = changeDataFunction37()
 9 15 85 55 7 6 3 27 11 31 90 81 5 86 30 ;
 53 87 93 62 19 12 53 73 4 1 65 35 65 23 40; 
 13 22 34 5 68 81 53 66 96 50 40 70 92 13 43;   ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [4 3 1 2 4 4 4 3 4 1 1 2 4 3 2 1 4 1 3 4 2 1 4 3 4 3 1 2 4 4 ];
     assembly_data = [569 256 157 776 ];
     job_num = size(change_data, 1);
@@ -2119,7 +2119,7 @@ function data = changeDataFunction38()
 83 62 61 26 14 69 34 61 12 2 27 51 64 14 82 ;
 54 82 68 83 71 81 6 42 22 22 94 25 53 5 70 ;
 67 72 47 35 78 34 67 86 89 69 46 57 87 22 87   ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [1 2 1 2 1 1 4 4 3 3 2 3 4 1 1 3 3 3 4 3 2 3 3 1 1 2 1 2 1 1 ];
     assembly_data = [632 261 518 365 ];
     job_num = size(change_data, 1);
@@ -2191,7 +2191,7 @@ function data = changeDataFunction39()
 82 61 68 65 48 88 2 76 37 72 18 11 33 24 65 ;
 94 14 17 25 57 81 8 81 59 97 43 34 55 36 2 ;
 23 64 7 89 13 96 84 91 20 3 45 50 1 41 57   ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [2 1 4 1 3 2 1 4 2 1 4 2 2 4 3 3 4 1 2 4 1 3 2 3 2 1 4 1 3 2 ];
     assembly_data = [381 502 197 318 ];
     job_num = size(change_data, 1);
@@ -2263,7 +2263,7 @@ function data = changeDataFunction40()
 75 82 75 94 67 15 23 57 4 51 23 40 63 97 20 ;
 14 33 16 14 24 1 20 96 75 36 92 74 13 79 48 ;
 33 89 89 49 58 32 95 64 11 13 43 98 32 56 62;  ];
-    change_data = combinematrices(machine, time);
+    change_data = combineMatrices(machine, time);
     assembly = [4 4 2 3 2 3 3 1 4 3 3 2 1 2 1 4 2 4 1 2 3 2 3 2 4 4 2 3 2 3 ];
     assembly_data = [30 131 396 271 ];
     job_num = size(change_data, 1);
@@ -2271,7 +2271,6 @@ function data = changeDataFunction40()
     factory_num = 4;
     data = {change_data job_num work_num factory_num assembly assembly_data};
 end
-
 
 
 function c = combineMatrices(a, b)
