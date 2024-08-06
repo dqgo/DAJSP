@@ -3,12 +3,12 @@
 % 2024年6月20日
 function MAINRETUNE = MAINGREEDY()
     tic
-    global thisAGVCmax;
+    
     global thisMinCmax;
     thisMinCmax = 9999;
     previous_fitness = thisMinCmax;
     %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
-    popu = 10; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
+    popu = 200; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
     maxIterate = inf;
     nowIterate = 0;
     Pcross = 0.9;
@@ -24,7 +24,7 @@ function MAINRETUNE = MAINGREEDY()
     tournament_size = 3;
     iterate_num = 5000;
     tubeSearchLength = 14;
-    threshold = 25;
+    threshold = 100;
     %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
     %载入算例
     [data] = changeDataFunction();
@@ -36,7 +36,7 @@ function MAINRETUNE = MAINGREEDY()
 
         %% -------------------------------GA+TS with greedy-----------------------------------------------------------
 
-        for i = 1:popu
+        parfor i = 1:popu
             chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
         end
 
@@ -95,54 +95,4 @@ function MAINRETUNE = MAINGREEDY()
     toc
 end
 
-% function [chromos_withno_elite,eliteChromos,MINCmax] = dajsp1(popu,chromos,iterate_num,threshold,data,tubeSearchLength,pElite,tournament_size,Pcross,Pmuta,nowMinCmax,nowIterate)
-%     global thisMinCmax;
-%         % parfor i=1:popu
-%         %     chromos(i,:)=TS4DAJSP(chromos(i,:),iterate_num,threshold,data,tubeSearchLength);
-%         % end
-%
-%
-%         %计算适应度
-%         fitness = calcFitness(chromos,data);
-%
-%         %选择操作
-%         [chromos_withno_elite,eliteChromos]=selectChromos(chromos,fitness,pElite,tournament_size);
-%         nowMinCmax(nowIterate+1)=thisMinCmax;
-%         MINCmax(nowIterate+1)=min(nowMinCmax);
-%         refreshdata
-%         drawnow
-%
-%         %交叉操作 %动态的交叉概率 %随机选择一种交叉方式 %多次交叉
-%         chromos_withno_elite=crossDAJSP(chromos_withno_elite,Pcross);
-%
-%
-%         %变异操作 %动态的变异概率
-%         chromos_withno_elite=muteDAJSP(chromos_withno_elite,Pmuta,data{1,4});
-% end
-%
-%
-%
-%
-% function [chromos_withno_elite,eliteChromos,MINCmax] = dajsp2(popu,chromos,iterate_num,threshold,data,tubeSearchLength,pElite,tournament_size,Pcross,Pmuta,nowMinCmax,nowIterate)
-%     global thisMinCmax;
-%         parfor i=1:popu
-%             chromos(i,:)=TS_with_greedy4DAJSP(chromos(i,:),iterate_num,threshold,data,tubeSearchLength);
-%         end
-%
-%         %计算适应度
-%         fitness = calcFitness_in_greedy(chromos,data);
-%
-%         %选择操作
-%         [chromos_withno_elite,eliteChromos]=selectChromos(chromos,fitness,pElite,tournament_size);
-%         nowMinCmax(nowIterate+1)=thisMinCmax;
-%         MINCmax(nowIterate+1)=min(nowMinCmax);
-%         refreshdata
-%         drawnow
-%
-%         %交叉操作 %动态的交叉概率 %随机选择一种交叉方式 %多次交叉
-%         chromos_withno_elite=crossDAJSP(chromos_withno_elite,Pcross);
-%
-%
-%         %变异操作 %动态的变异概率
-%         chromos_withno_elite=muteDAJSP(chromos_withno_elite,Pmuta,data{1,4});
-% end
+
