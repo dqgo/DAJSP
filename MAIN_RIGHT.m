@@ -11,7 +11,7 @@ function MAINRETUNE = MAIN_RIGHT()
         thisMinCmax = 9999;
         previous_fitness = thisMinCmax;
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
-        popu = 20; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
+        popu = 200; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
         maxIterate = inf;
         nowIterate = 0;
         Pcross = 0.9;
@@ -27,22 +27,21 @@ function MAINRETUNE = MAIN_RIGHT()
         tournament_size = 3;
         iterate_num = 5000;
         tubeSearchLength = 14;
-        threshold = 1;
+        threshold = 100;
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
         %载入算例
 
         % data={1[change_data] 2[job_num] 3[work_num] 4[factory_num] 5[assembly] 6[assembly_data]}
         % 初始化种群
-        nowIterate = 0;
         [chromos] = createInitialPopus(popu, data);
 
         while all(nowIterate < maxIterate)
 
             %% -------------------------------GA+TS with greedy-----------------------------------------------------------
 
-            % parfor i = 1:popu
-            %     chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
-            % end
+            parfor i = 1:popu
+                chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
+            end
 
             %计算适应度
             fitness = calcFitness_in_greedy(chromos, data);
