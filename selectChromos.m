@@ -1,13 +1,13 @@
 % chromos={[FS] [PS] [AS]}
-function [chromos_withon_elite, elite_population] = selectChromos(chromos, fitness, elite_ratio, tournament_size)
+function [chromos_withon_elite, elite_population,thisMinCmax] = selectChromos(chromos, fitness, elite_ratio, tournament_size)
     % function new_population = tournamentSelection(population, fitness, tournament_size, elite_ratio)
     % population: 输入的种群，每行表示一个个体，每列表示一个基因
     % fitness: 每个个体的适应度
     % tournament_size: 锦标赛选择的大小
     % elite_ratio: 精英保留系数，例如0.1表示保留最优的10%
 
-    global thisAGVCmax;
-    global thisMinCmax;
+    % global thisAGVCmax;
+    % global thisMinCmax;
     thisAGVCmax = mean(fitness);
     thisMinCmax = min(fitness);
     population = chromos;

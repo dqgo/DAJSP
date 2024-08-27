@@ -4,6 +4,7 @@
 function chromo = TS_with_greedy4DAJSP(chromo, iterate_num, threshold, data, tubeSearchLength)
     % 初始化
     best_fitness = 9999;
+    best_chromo=[];
     tubeList = struct('tube', {}, 'tubeSearchLength', {});
     previous_fitness = best_fitness;
 
@@ -108,8 +109,8 @@ function chromo = TS_with_greedy4DAJSP(chromo, iterate_num, threshold, data, tub
     % plot(1:size(temp2,2),temp1);% 最优的曲线
     % figure;
     % plot(1:size(temp2,2),temp2);% 选择的曲线
-    % if isbreak == 0
+    if isbreak == 0
         chromo = best_chromo;
-    % end
+    end
 
 end

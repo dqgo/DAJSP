@@ -1,9 +1,9 @@
 %%DAJSP
 % GA with TS
 % 2024年6月20日
-function MAIN_RIGHT()
+function MAIN_RIGHT3()
     % global thisMinCmax;
-    for instance = 1:10
+    for instance = 21:30
         tic
         [data] = changedata_instances(instance);        
         thisMinCmax = 9999;
@@ -26,7 +26,6 @@ function MAIN_RIGHT()
         iterate_num = 5000;
         tubeSearchLength = 14;
         threshold = 30;
-        unchanged_count=0;
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
         %载入算例
 
