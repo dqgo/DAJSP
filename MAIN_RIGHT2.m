@@ -3,18 +3,26 @@
 % 2024年6月20日
 function MAIN_RIGHT2()
     % global thisMinCmax;
-    for instance = 11:20
+    k=1;
+    for  i=24:40
+        for  j=1:20
+            allInstance(k)=i;k=k+1;
+        end
+    end
+
+    for instance =allInstance %26  32 33  40
         tic
         [data] = changedata_instances(instance);        
         thisMinCmax = 9999;
         previous_fitness = thisMinCmax;
+        first_change_time = NaN; % 记录第一次适应度变化的时间
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
-        popu = 500; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
+        popu = 50; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
         maxIterate = inf;
         nowIterate = 0;
-        Pcross = 0.9;
+        Pcross = 0.95;
         % PmutaPMX=0.25;
-        Pmuta = 0.5;
+        Pmuta = 0.55;
         % muteNum=3;
         % numCross=10;
         % immigrantNum=2;
@@ -25,7 +33,7 @@ function MAIN_RIGHT2()
         tournament_size = 3;
         iterate_num = 5000;
         tubeSearchLength = 14;
-        threshold = 30;
+        threshold = 300;
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
         %载入算例
 
@@ -37,7 +45,7 @@ function MAIN_RIGHT2()
 
             %% -------------------------------GA+TS with greedy-----------------------------------------------------------
 
-            for i = 1:popu
+            parfor i = 1:popu
                 chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
             end
 
@@ -75,25 +83,28 @@ function MAIN_RIGHT2()
                 unchanged_count = unchanged_count + 1;
             else
                 unchanged_count = 0;
+                if isnan(first_change_time) || MINCmax(end) < previous_fitness
+                    first_change_time = toc; % 记录第一次适应度变化的时间
+                end
             end
 
             % 检查连续不变动的次数是否达到阈值，如果是则跳出循环
             if unchanged_count >= breakIterate
                 % disp('连续没有变动，跳出循环');
                 % disp(i);
-
                 break;
 
             end
 
             previous_fitness = MINCmax(end); % 更新上一次的适应度
+            % disp(previous_fitness);
         end
 
         %至此，已完成，下面找出种群内的最优解染色体和最优解数目，并输出gant图
         % MAINEND(popu,chromos,changeData,workpieceNum,machNum);
 
-        disp("Instance: "+instance + "  Cmax: "+MINCmax(end));
-        toc
+        final_time = toc; % 记录最终时间
+        disp("Instance: " + instance + "  Cmax: " + MINCmax(end) + "  First Change Time: " + first_change_time + "  Final Time: " + final_time);
         clear
     end
 

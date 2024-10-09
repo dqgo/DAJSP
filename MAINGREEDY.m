@@ -61,6 +61,7 @@ function MAINRETUNE = MAINGREEDY()
         index = randperm(size(chromos, 1));
         chromos = chromos(index, :);
 
+        
         nowIterate = nowIterate + 1;
         % % % % 打印在这里
         % disp(nowMinCmax(nowIterate));%disp(nowIterate);

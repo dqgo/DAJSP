@@ -21,17 +21,32 @@ function chromo = TS_with_greedy4DAJSP(chromo, iterate_num, threshold, data, tub
         % 对FA作业重新分配到其他工厂，对PS进行N5，对AS进行N1
         % [nei_chromos]=create_schedule(schedule,index,keyblock_schedule,chromo,data);
         [nei_chromos, nei_schedule, nei_sign, PS_conmence_num] = create_nei(schedule, index, keyblock_schedule, chromo, data, schedule_right, Cmax);
-
         if size(nei_chromos, 1) == 0
             isbreak = 1; break;
         end
 
-        fitness1 = calcFitness(nei_chromos(1:PS_conmence_num - 1, :), data);
-        fitness2 = approximate_fitness(nei_schedule, nei_sign, schedule, data, schedule_right, Cmax);
-        %fitness = calcFitness(nei_chromos, data);
-        %fitness2 = approximate_fitness(nei_schedule, nei_sign, schedule, data, schedule_right, Cmax);
-        %fitness(PS_conmence_num:end)-fitness2
-        fitness = [fitness1; fitness2];
+        % 将nei_chromos转化为矩阵，去除重复的解，并恢复为元胞数组
+        only_FA_nei_chromos=nei_chromos(1:PS_conmence_num - 1, :);
+        only_FA_nei_chromos = cell2mat(only_FA_nei_chromos);
+        [only_FA_nei_chromos] = unique(only_FA_nei_chromos, 'rows'); 
+        only_FA_nei_chromos = mat2cell(only_FA_nei_chromos, ones(size(only_FA_nei_chromos, 1), 1), [data{2},data{3}*data{2},max(data{5})]);
+        nei_chromos(1:PS_conmence_num - 1, :)=[];
+        nei_chromos=[only_FA_nei_chromos;nei_chromos];
+        PS_conmence_num=size(only_FA_nei_chromos,1)+1;
+        
+        % ---------------------这是精确和近似分开的----------------------
+        % nei_chromos2=schedules2chromos(nei_schedule);
+        % fitness1 = calcFitness_in_greedy(only_FA_nei_chromos, data);
+        % fitness2 = approximate_fitness(nei_schedule, nei_sign, schedule, data, schedule_right, Cmax);
+        % fitness22 = calcFitness_in_greedy(nei_chromos2, data);
+        % %fitness22-fitness2  %精确地减去近似的
+        % fitness = [fitness1; fitness2];
+       
+
+        % -------------------------这是只有精确的----------------------
+        nei_chromos2=schedules2chromos(nei_schedule);
+        nei_chromos=[nei_chromos;nei_chromos2];
+        fitness=calcFitness_in_greedy(nei_chromos,data);
         [fitness, index] = sortrows(fitness);
 
         if best_fitness > fitness(1)
@@ -103,6 +118,7 @@ function chromo = TS_with_greedy4DAJSP(chromo, iterate_num, threshold, data, tub
 
         temp1(i) = best_fitness;
         temp2(i) = fitness(j, :);
+
     end
 
     % figure;

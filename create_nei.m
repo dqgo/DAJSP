@@ -37,12 +37,10 @@ function [nei_chromos, nei_schedule, nei_sign, PS_conmence_num] = create_nei(sch
                 end
 
                 this_nei_chromo = chromo;
-                this_nei_chromo{1}(job_index) = rand_factory;
+                this_nei_chromo{1}(this_job) = rand_factory;
                 nei_chromos = [nei_chromos; this_nei_chromo];
             end
-
         end
-
     end
 
     FA_nei_num = size(nei_chromos, 1); PS_conmence_num = FA_nei_num + 1;
