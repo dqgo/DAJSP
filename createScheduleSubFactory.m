@@ -72,7 +72,7 @@
 % 
 % end
 
-function schedule = createSchedule(changeData,chromo,workpieceNum,machNum)
+function schedule = createScheduleSubFactory(changeData,chromo,workpieceNum,machNum)
     lengthNum=size(chromo,2);
     schedule=zeros(lengthNum,5);
     workpieceProcessId=zeros(1,workpieceNum);
