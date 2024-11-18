@@ -21,7 +21,8 @@ function chromo = TS4DAJSP(chromo, iterate_num, threshold, data, tubeSearchLengt
         [keyblock_schedule, index] = find_keyblock(schedule);
         % 对每个关键块调度进行标注
         % 对FA作业重新分配到其他工厂，对PS进行N5，对AS进行N1
-        [nei_chromos] = create_schedule(schedule, index, keyblock_schedule, chromo, data);
+        % [nei_chromos] = create_schedule(schedule, index, keyblock_schedule, chromo, data);
+        [nei_chromos] = create__nei_schedule_nogreedy(schedule, index, keyblock_schedule, chromo, data);
 
         if size(nei_chromos, 1) == 0
             isbreak = 1; break;
