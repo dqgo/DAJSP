@@ -1,0 +1,44 @@
+diary("1119test.txt");
+test4more_assembly_no_greedy
+Instance: 1  Cmax: 3053  First Change Time: 10.7254  Final Time: 10.7256
+Instance: 2  Cmax: 1973  First Change Time: 8.1004  Final Time: 8.1006
+Instance: 3  Cmax: 2552  First Change Time: 7.6225  Final Time: 7.6226
+Instance: 4  Cmax: 2928  First Change Time: 8.1851  Final Time: 8.1855
+Instance: 5  Cmax: 3071  First Change Time: 8.1857  Final Time: 8.186
+Instance: 6  Cmax: 3349  First Change Time: 13.19  Final Time: 13.1901
+Instance: 7  Cmax: 3344  First Change Time: 9.9835  Final Time: 9.9835
+Instance: 8  Cmax: 2114  First Change Time: 9.5306  Final Time: 9.5306
+Instance: 9  Cmax: 3309  First Change Time: 9.0077  Final Time: 9.0077
+Instance: 10  Cmax: 3753  First Change Time: 10.2621  Final Time: 10.2621
+Instance: 11  Cmax: 4005  First Change Time: 15.8974  Final Time: 15.8974
+Instance: 12  Cmax: 3101  First Change Time: 16.0226  Final Time: 16.0226
+Instance: 13  Cmax: 3840  First Change Time: 14.6102  Final Time: 14.6102
+Instance: 14  Cmax: 3570  First Change Time: 16.3173  Final Time: 16.3173
+Instance: 15  Cmax: 3566  First Change Time: 15.4331  Final Time: 15.4331
+Instance: 16  Cmax: 3896  First Change Time: 12.2525  Final Time: 12.2525
+Instance: 17  Cmax: 3127  First Change Time: 13.8735  Final Time: 13.8735
+Instance: 18  Cmax: 2809  First Change Time: 10.6939  Final Time: 10.6939
+Instance: 19  Cmax: 3471  First Change Time: 17.206  Final Time: 17.206
+Instance: 20  Cmax: 4050  First Change Time: 12.8647  Final Time: 12.8647
+Instance: 21  Cmax: 3987  First Change Time: 18.8283  Final Time: 18.8283
+Instance: 22  Cmax: 4742  First Change Time: 18.2326  Final Time: 18.2326
+Instance: 23  Cmax: 5163  First Change Time: 19.9855  Final Time: 19.9855
+Instance: 24  Cmax: 4539  First Change Time: 17.8646  Final Time: 17.8646
+Instance: 25  Cmax: 4854  First Change Time: 17.7581  Final Time: 17.7581
+Instance: 26  Cmax: 4442  First Change Time: 17.7994  Final Time: 17.7994
+Instance: 27  Cmax: 4914  First Change Time: 17.7949  Final Time: 17.7949
+Instance: 28  Cmax: 3463  First Change Time: 15.9146  Final Time: 15.9146
+Instance: 29  Cmax: 4642  First Change Time: 19.5396  Final Time: 19.5396
+Instance: 30  Cmax: 4657  First Change Time: 20.0079  Final Time: 20.008
+Instance: 31  Cmax: 3963  First Change Time: 24.3206  Final Time: 24.3206
+Instance: 32  Cmax: 3706  First Change Time: 27.6186  Final Time: 27.6186
+Instance: 33  Cmax: 3227  First Change Time: 27.5474  Final Time: 27.5474
+Instance: 34  Cmax: 3548  First Change Time: 33.6104  Final Time: 33.6105
+Instance: 35  Cmax: 3683  First Change Time: 24.8849  Final Time: 24.8849
+Instance: 36  Cmax: 3980  First Change Time: 28.5357  Final Time: 28.5357
+Instance: 37  Cmax: 4174  First Change Time: 29.0666  Final Time: 29.0666
+Instance: 38  Cmax: 4509  First Change Time: 23.6477  Final Time: 23.6477
+Instance: 39  Cmax: 4009  First Change Time: 24.7664  Final Time: 24.7664
+Instance: 40  Cmax: 2742  First Change Time: 21.8847  Final Time: 21.8847
+IdleTimeout has been reached.
+Parallel pool using the 'Processes' profile is shutting down.

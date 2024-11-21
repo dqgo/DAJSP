@@ -1,7 +1,7 @@
 %%DAJSP
 % GA with TS
 % 2024年6月20日
-function duizhao()
+function test4more_assembly_in_greedy()
     % global thisMinCmax;
     k=1;
     for  i=1:40
@@ -12,7 +12,7 @@ function duizhao()
 
     for instance =allInstance 
         tic
-        [data] = changedata_instances(instance);        
+        [data] = changedata_instances_more_assembly(instance);        
         thisMinCmax = 9999;
         previous_fitness = thisMinCmax;
         first_change_time = NaN; % 记录第一次适应度变化的时间
@@ -46,13 +46,11 @@ function duizhao()
             %% -------------------------------GA+TS with greedy-----------------------------------------------------------
 
             parfor i = 1:popu
-                % chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
-                chromos(i, :) = TS4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
+                chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
             end
 
             %计算适应度
-            % fitness = calcFitness_in_greedy(chromos, data);
-            fitness = calcFitness(chromos, data);
+            fitness = calcFitness_in_greedy(chromos, data);
 
             %选择操作
             [chromos_withno_elite, eliteChromos,thisMinCmax] = selectChromos(chromos, fitness, pElite, tournament_size);

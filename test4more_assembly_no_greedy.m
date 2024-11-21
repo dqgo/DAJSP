@@ -1,24 +1,24 @@
 %%DAJSP
 % GA with TS
 % 2024年6月20日
-function duizhao()
+function test4more_assembly_no_greedy()
     % global thisMinCmax;
     k=1;
     for  i=1:40
-        for  j=1:10
+        for  j=1:1
             allInstance(k)=i;k=k+1;
         end
     end
 
     for instance =allInstance 
         tic
-        [data] = changedata_instances(instance);        
+        [data] = changedata_instances_more_assembly(instance);        
         thisMinCmax = 9999;
         previous_fitness = thisMinCmax;
         first_change_time = NaN; % 记录第一次适应度变化的时间
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
         popu = 50; %得是偶数，并且popu*(1-pElite)也要是偶数要不然交叉就错了
-        maxIterate = inf;
+        maxIterate = inf; %%
         nowIterate = 0;
         Pcross = 0.95;
         % PmutaPMX=0.25;
@@ -33,7 +33,7 @@ function duizhao()
         tournament_size = 3;
         iterate_num = 5000;
         tubeSearchLength = 14;
-        threshold = 300;
+        threshold = 300; %%
         %%%%%%%%%%%%%%%%%%%%%系数%%%%%%%%%%%%%%%%%%%%%
         %载入算例
 
@@ -43,7 +43,7 @@ function duizhao()
 
         while all(nowIterate < maxIterate)
 
-            %% -------------------------------GA+TS with greedy-----------------------------------------------------------
+            %% -------------------------------GA+TS without greedy-----------------------------------------------------------
 
             parfor i = 1:popu
                 % chromos(i, :) = TS_with_greedy4DAJSP(chromos(i, :), iterate_num, threshold, data, tubeSearchLength);
